@@ -14,6 +14,11 @@
     text-decoration: none;
 }
 
+.navbar-inverse .navbar-nav > li > a:hover {
+  color: white;
+  opacity: 0.75;
+}
+
 .jumbotron-img {
     background-image: asset_url('home-page-pic.png');
     background-size: cover;
@@ -33,6 +38,12 @@
 .lead-para {
     color: #fff;
 }
+
+.btn-xlarge {
+    font-size: 1.7em;
+    background-color: black;
+}
+
 footer{
    margin-top: 20px; 
     width: 100%;
