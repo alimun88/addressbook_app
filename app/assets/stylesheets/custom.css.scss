@@ -1,9 +1,15 @@
+
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+@import "font-awesome-sprockets";
+@import "font-awesome";
+
+
 #logo {
     float: left;
-    font-size: 1.7em;
+    font-family: 'Open Sans', sans-serif;
+    font-weight: 800;
     color: #fff;
     text-transform: uppercase;
     letter-spacing: -1px;
@@ -14,9 +20,11 @@
     text-decoration: none;
 }
 
-.navbar-inverse .navbar-nav > li > a:hover {
-  color: white;
-  opacity: 0.75;
+.navbar-inverse .navbar-toggle {
+  border: 2px solid white;
+  &:hover, &:focus {
+    background-color: #00c6ff;
+  }
 }
 
 .jumbotron-img {
