@@ -1,6 +1,6 @@
-  <h2 align="center">Contact of : <%= @contact.firstname + ' ' + @contact.lastname %></h2>
 <div class="well col-xs-6 col-xs-offset-3">
-    <h4 class="center description"><strong>Address Details:</strong></h4>
+  <h2 align="center">Contact of : <%= @contact.firstname + ' ' + @contact.lastname %></h2>
+  <h4 class="center description"><strong>Address Details:</strong></h4>
 <hr>
   <strong>Full Name: </strong><%= simple_format(@contact.firstname + ' ' + @contact.middlename + ' ' + @contact.lastname) %>
   <strong>Complete Address: </strong><%= simple_format(@contact.address) %>
