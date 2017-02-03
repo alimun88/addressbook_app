@@ -6,4 +6,6 @@ Rails.application.routes.draw do
   resources :contacts
   
   get 'signup', to: 'users#new'
+  
+  resources :users, except: [:new]
 end
