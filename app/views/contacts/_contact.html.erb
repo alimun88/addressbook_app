@@ -1,10 +1,4 @@
-<h1 align="center">Listing all contacts</h1>
-
-<div class="center">
-    <%= will_paginate %>
-  </div>
-  
-<% @contacts.each do |contact| %>
+<% obj.each do |contact| %>
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
       <div class="well">
@@ -33,7 +27,3 @@
     </div>
   </div>
 <% end %>
-  
-  <div class="center">
-    <%= will_paginate %>
-  </div>
