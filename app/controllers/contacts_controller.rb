@@ -1,8 +1,10 @@
 class ContactsController < ApplicationController
-  before_action :set_contact, only: [:edit, :show, :update, :destroy]
+  before_action :set_contact, only: [:edit, :update, :show, :destroy]
+  before_action :require_user, except: [:index, :show]
+  before_action :require_same_user, only: [:edit, :update, :destroy]
   
   def index
-    @contacts = Contact.all
+    @contacts = Contact.paginate(page: params[:page], per_page: 5)
   end
     
   def new
@@ -11,6 +13,7 @@ class ContactsController < ApplicationController
     
   def create
     @contact = Contact.new(contact_params)
+    @contact.user = current_user
     if @contact.save
       flash[:success] = "Contact was created successfully"
       redirect_to contact_path(@contact)
@@ -37,7 +40,8 @@ class ContactsController < ApplicationController
   end
   
   def destroy
-    @contact.delete
+    @contact.destroy
+    
     flash[:danger] = "Contact was successfully deleted"
     redirect_to contacts_path
   end
@@ -49,4 +53,12 @@ class ContactsController < ApplicationController
   def contact_params
     params.require(:contact).permit(:firstname, :middlename, :lastname, :streetnumber, :streetname, :city, :state, :zipcode)
   end
+  
+  def require_same_user
+    if current_user != @contact.user and !current_user.admin?
+      flash[:danger] = "You can only edit or delete your own contact!"
+      redirect_to root_path
+    end
+  end
+  
 end

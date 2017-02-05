@@ -1,4 +1,5 @@
 class Contact < ActiveRecord::Base
+  belongs_to :user
   validates :firstname, :lastname, :streetname, :streetnumber, :zipcode, :city, :state, presence: true
 
   geocoded_by :address

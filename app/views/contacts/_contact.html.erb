@@ -1,10 +1,4 @@
-<h1 align="center">Listing all contacts</h1>
-
-<div class="center">
-    <%= will_paginate %>
-  </div>
-  
-<% @contacts.each do |contact| %>
+<% obj.each do |contact| %>
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
       <div class="well">
@@ -17,7 +11,7 @@
             <% if logged_in? %>
               <%= simple_format(contact.address) %>
             <% else %>
-             <p class="text-danger"> You have to be member in order to see the address, Please sign up or log in if already signed up! </p>
+             <p class="text-danger" > You have to be member in order to see the address, Please sign up or log in if already signed up! </p>
             <% end %>
             
             <div class="article-meta-details">
@@ -25,17 +19,6 @@
               <%= time_ago_in_words(contact.created_at) %> ago,
               last updated: <%= time_ago_in_words(contact.updated_at) %> ago</small>
             </div>
-<<<<<<< HEAD
-              <div class="contact-body">
-                <strong>Full Name: </strong><%= simple_format(contact.firstname + ' ' + contact.middlename + ' ' + contact.lastname) %>
-                <strong>Complete Address: </strong><%= simple_format(contact.address) %>
-              </div>
-            <div class="contact-actions">
-              <%= link_to "Edit this contact", edit_contact_path(contact), class: "btn btn-xs btn-primary" %>
-              <%= link_to "Delete this contact", contact_path(contact), method: :delete,
-                  data: { confirm: "Are you sure you want to delete the contact?"}, class: "btn btn-xs btn-danger" %>
-=======
->>>>>>> create_users
           </div>
           
           <% if logged_in? && (current_user == contact.user || current_user.admin?) %>
@@ -50,7 +33,3 @@
     </div>
   </div>
 <% end %>
-  
-  <div class="center">
-    <%= will_paginate %>
-  </div>
