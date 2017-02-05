@@ -6,8 +6,14 @@
         <%= link_to contact.firstname, contact_path(contact) %>
         </div>
           <div class="contact-body">
-            <strong>Full Name: </strong><%= simple_format(@contact.firstname + ' ' + @contact.middlename + ' ' + @contact.lastname) %>
-            <strong>Complete Address: </strong><%= simple_format(@contact.address) %>
+            <strong>Full Name: </strong><%= simple_format(contact.firstname + ' ' + contact.middlename + ' ' + contact.lastname) %>
+            <strong>Complete Address: </strong>
+            <% if logged_in? %>
+              <%= simple_format(contact.address) %>
+            <% else %>
+             <p class="text-danger" > You have to be member in order to see the address, Please sign up or log in if already signed up! </p>
+            <% end %>
+            
             <div class="article-meta-details">
               <small>Created by: <%= contact.user.username if contact.user%>,
               <%= time_ago_in_words(contact.created_at) %> ago,
@@ -17,8 +23,8 @@
           
           <% if logged_in? && (current_user == contact.user || current_user.admin?) %>
           <div class="contact-actions">
-            <%= link_to "Edit this contact", edit_contact_path(@contact), class: "btn btn-sm btn-primary" %>
-            <%= link_to "Delete this contact", contact_path(@contact), method: :delete,
+            <%= link_to "Edit this contact", edit_contact_path(contact), class: "btn btn-sm btn-primary" %>
+            <%= link_to "Delete this contact", contact_path(contact), method: :delete,
                 data: { confirm: "Are you sure you want to delete the contact?"},
                 class: "btn btn-sm btn-danger" %>
           </div>

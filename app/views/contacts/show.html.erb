@@ -1,5 +1,5 @@
 <div class="well col-xs-8 col-xs-offset-2">
-  <h2 class="center">Contact of </h2>
+  <h2 class="center">Contact of <%= @contact.firstname + ' ' + @contact.middlename + ' ' + @contact.lastname %> </h2>
   <div class="center">
   <% if @contact.user %>
     <ul class="listing">
@@ -8,7 +8,7 @@
           <li>Created by:</li>
           <li><%= link_to gravatar_for(@contact.user), user_path(@contact.user) %></li>
           <li class="contact-title"><%= link_to @contact.user.username, user_path(@contact.user) %></li>
-          <li><small><%= pluralize(@contact.user.contacts.count, "contact") if @contact.user.contact %></small></li>
+          <li><small><%= pluralize(@contact.user.contacts.count, "contact") if @contact.user.contacts %></small></li>
           </div>
         </div>
       </ul>
@@ -17,16 +17,21 @@
 <h4 class="center "><strong>Address Details:</strong></h4>
 <hr>
   <strong>Full Name: </strong><%= simple_format(@contact.firstname + ' ' + @contact.middlename + ' ' + @contact.lastname) %>
-  <strong>Complete Address: </strong><%= simple_format(@contact.address) %>
+  <strong>Complete Address: </strong>
+  <% if logged_in? %>
+    <%= simple_format(@contact.address) %>
+  <% else %>
+      <p class="text-danger"> You have to be member in order to see the address, Please sign up or log in if already signed up! </p>
+  <% end %>
 
-  <div class="contact-actions">
-    <% if logged_in? && (current_user == @articles.user || current_user.admin?) %>
-    <%= link_to "Edit this contact", edit_contact_path(@contact), class: "btn btn-xs btn-primary" %>
-    <%= link_to "Delete this contact", contact_path(@contact), method: :delete,
-    data: { confirm: "Are you sure you want to delete the contact?"},
-    class: "btn btn-xs btn-danger" %>
-    <% end %>
-    <%= link_to "View all contact", contacts_path, class: "btn btn-xs btn-success" %>
+    <div class="contact-actions">
+      <% if logged_in? && (current_user == @contact.user || current_user.admin?) %>
+      <%= link_to "Edit this contact", edit_contact_path(@contact), class: "btn btn-xs btn-primary" %>
+      <%= link_to "Delete this contact", contact_path(@contact), method: :delete,
+      data: { confirm: "Are you sure you want to delete the contact?"},
+      class: "btn btn-xs btn-danger" %>
+      <% end %>
+      <%= link_to "View all contact", contacts_path, class: "btn btn-xs btn-success" %>
+    </div>
   </div>
 </div>
-
