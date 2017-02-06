@@ -1,9 +1,9 @@
 <div class="well col-xs-8 col-xs-offset-2">
-  <h2 class="center">Contact of <%= @contact.firstname + ' ' + @contact.middlename + ' ' + @contact.lastname %> </h2>
+  <h2 class="center">Contact of: <%= @contact.firstname + ' ' + @contact.middlename + ' ' + @contact.lastname %> </h2>
   <div class="center">
   <% if @contact.user %>
     <ul class="listing">
-      <div class="row">
+      <div class="row well">
         <div class="col-xs-8 col-xs-offset-2">
           <li>Created by:</li>
           <li><%= link_to gravatar_for(@contact.user), user_path(@contact.user) %></li>

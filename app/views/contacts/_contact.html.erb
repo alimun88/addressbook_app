@@ -3,7 +3,7 @@
     <div class="col-xs-8 col-xs-offset-2">
       <div class="well">
         <div class="contact-title">
-        <%= link_to contact.firstname, contact_path(contact) %>
+        <%= link_to (contact.firstname + ' ' + contact.lastname), contact_path(contact) %>
         </div>
           <div class="contact-body">
             <strong>Full Name: </strong><%= simple_format(contact.firstname + ' ' + contact.middlename + ' ' + contact.lastname) %>
@@ -14,7 +14,7 @@
              <p class="text-danger" > You have to be member in order to see the address, Please sign up or log in if already signed up! </p>
             <% end %>
             
-            <div class="article-meta-details">
+            <div class="contact-meta-details">
               <small>Created by: <%= contact.user.username if contact.user%>,
               <%= time_ago_in_words(contact.created_at) %> ago,
               last updated: <%= time_ago_in_words(contact.updated_at) %> ago</small>

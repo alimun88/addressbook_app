@@ -4,12 +4,12 @@
     <%= will_paginate %>
   </div>
   
-<% @contacts.each do |contact| %>
+  <% @contacts.each do |contact| %>
   <div class="row">
     <div class="col-xs-8 col-xs-offset-2">
       <div class="well">
         <div class="contact-title">
-        <%= link_to contact.firstname, contact_path(contact) %>
+        <%= link_to (contact.firstname + ' ' + contact.lastname), contact_path(contact) %>
         </div>
           <div class="contact-body">
             <strong>Full Name: </strong><%= simple_format(contact.firstname + ' ' + contact.middlename + ' ' + contact.lastname) %>
@@ -25,17 +25,6 @@
               <%= time_ago_in_words(contact.created_at) %> ago,
               last updated: <%= time_ago_in_words(contact.updated_at) %> ago</small>
             </div>
-<<<<<<< HEAD
-              <div class="contact-body">
-                <strong>Full Name: </strong><%= simple_format(contact.firstname + ' ' + contact.middlename + ' ' + contact.lastname) %>
-                <strong>Complete Address: </strong><%= simple_format(contact.address) %>
-              </div>
-            <div class="contact-actions">
-              <%= link_to "Edit this contact", edit_contact_path(contact), class: "btn btn-xs btn-primary" %>
-              <%= link_to "Delete this contact", contact_path(contact), method: :delete,
-                  data: { confirm: "Are you sure you want to delete the contact?"}, class: "btn btn-xs btn-danger" %>
-=======
->>>>>>> create_users
           </div>
           
           <% if logged_in? && (current_user == contact.user || current_user.admin?) %>
@@ -54,3 +43,4 @@
   <div class="center">
     <%= will_paginate %>
   </div>
+
