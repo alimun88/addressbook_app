@@ -31,12 +31,12 @@ ActiveRecord::Schema.define(version: 20170214234328) do
   end
 
   create_table "friendships", force: :cascade do |t|
-    t.integer  "uer_id"
+    t.integer  "user_id"
     t.integer  "friend_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["friend_id"], name: "index_friendships_on_friend_id"
-    t.index ["uer_id"], name: "index_friendships_on_uer_id"
+    t.index ["user_id"], name: "index_friendships_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
