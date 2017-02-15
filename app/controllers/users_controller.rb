@@ -3,6 +3,10 @@ class UsersController < ApplicationController
   before_action :require_same_user, only: [:edit, :update, :destroy]
   before_action :require_admin, only: [:destroy]
   
+  def my_friends
+    @friendships = current_user.friends
+  end
+  
   def index
     @users = User.paginate(page: params[:page], per_page: 5)
   end
@@ -45,10 +49,6 @@ class UsersController < ApplicationController
     @user.destroy
     flash[:danger] = "User and all articles created by user have been successfully deleted"
     redirect_to users_path
-  end
-  
-  def my_friends
-    
   end
   
   private
