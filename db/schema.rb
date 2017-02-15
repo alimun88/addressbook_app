@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170214234328) do
+ActiveRecord::Schema.define(version: 20170214221248) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "firstname"
@@ -27,7 +27,6 @@ ActiveRecord::Schema.define(version: 20170214234328) do
     t.string   "address2"
     t.string   "home_telephone"
     t.string   "mobile_telephone"
-    t.string   "country"
   end
 
   create_table "friendships", force: :cascade do |t|

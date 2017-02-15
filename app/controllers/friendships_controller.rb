@@ -1,6 +1,6 @@
 class FriendshipsController < ApplicationController
   
-  def friendships
+  def friends
     
   end
 end
