@@ -51,7 +51,7 @@ class ContactsController < ApplicationController
   end
   
   def contact_params
-    params.require(:contact).permit(:firstname, :middlename, :lastname, :streetnumber, :streetname, :city, :state, :zipcode)
+    params.require(:contact).permit(:firstname, :middlename, :lastname, :streetnumber, :streetname, :address2, :city, :state, :zipcode, :home_telephone, :mobile_telephone, :country)
   end
   
   def require_same_user

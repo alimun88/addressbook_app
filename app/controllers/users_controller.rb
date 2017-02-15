@@ -47,6 +47,10 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
   
+  def my_friends
+    
+  end
+  
   private
   def set_user
     @user = User.find(params[:id])

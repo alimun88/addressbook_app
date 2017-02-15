@@ -15,4 +15,6 @@ Rails.application.routes.draw do
   
   delete 'logout', to: 'sessions#destroy'
   
+  get 'my_friends', to: 'users#my_friends'
+  
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170205061659) do
+ActiveRecord::Schema.define(version: 20170214234328) do
 
   create_table "contacts", force: :cascade do |t|
     t.string   "firstname"
@@ -21,9 +21,22 @@ ActiveRecord::Schema.define(version: 20170205061659) do
     t.string   "city"
     t.string   "state"
     t.string   "zipcode"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
     t.integer  "user_id"
+    t.string   "address2"
+    t.string   "home_telephone"
+    t.string   "mobile_telephone"
+    t.string   "country"
+  end
+
+  create_table "friendships", force: :cascade do |t|
+    t.integer  "uer_id"
+    t.integer  "friend_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["friend_id"], name: "index_friendships_on_friend_id"
+    t.index ["uer_id"], name: "index_friendships_on_uer_id"
   end
 
   create_table "users", force: :cascade do |t|

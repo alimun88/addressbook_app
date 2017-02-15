@@ -20,6 +20,8 @@
   <strong>Complete Address: </strong>
   <% if logged_in? %>
     <%= simple_format(@contact.address) %>
+    <strong>Home Phone Number: </strong> <%= number_to_phone(@contact.home_telephone, pattern: /(\d{1,3})(\d{3})(\d{4})$/, area_code: true) %><br>
+    <strong>Mobile Phone Number: </strong><%= number_to_phone(@contact.mobile_telephone, pattern: /(\d{1,3})(\d{3})(\d{4})$/, area_code: true) %>
   <% else %>
       <p class="text-danger"> You have to be member in order to see the address, Please sign up or log in if already signed up! </p>
   <% end %>
