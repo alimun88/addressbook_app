@@ -1,9 +1,10 @@
 class User < ActiveRecord::Base
   has_many :contacts, dependent: :destroy
-  before_save { self.email = email.downcase }
   
   has_many :friendships
   has_many :friends, through: :friendships
+  
+  before_save { self.email = email.downcase }
   
   validates :username, presence: true, 
   uniqueness: {case_sensitive: false}, 
