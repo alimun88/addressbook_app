@@ -17,7 +17,7 @@
             <% end %>
             
             <div class="contact-meta-details">
-              <small>Created by: <%= contact.user.username if contact.user%>,
+              <small>Created by: <%= contact.user.full_name if contact.user%>,
               <%= time_ago_in_words(contact.created_at) %> ago,
               last updated: <%= time_ago_in_words(contact.updated_at) %> ago</small>
             </div>

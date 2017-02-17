@@ -8,7 +8,7 @@
     <div class="row">
       <div class="well well-lg col-xs-6 col-xs-offset-3">
         <li><%= link_to gravatar_for(user), user_path(user) %></li>
-        <li class="contact-link"><%= link_to user.username, user_path(user) %></li>
+        <li class="contact-link"><%= link_to user.full_name, user_path(user) %></li>
         <li class="contact-link"><%= link_to user.email, user_path(user) %></li>
         <li><small><%= pluralize(user.contacts.count, "contact") if user.contacts %></small></li>
         

@@ -69,7 +69,7 @@ class UsersController < ApplicationController
   def destroy
     @user = User.find(params[:id])
     @user.destroy
-    flash[:danger] = "User and all articles created by user have been successfully deleted"
+    flash[:danger] = "User and all contacts created by user have been successfully deleted"
     redirect_to users_path
   end
   
@@ -79,7 +79,7 @@ class UsersController < ApplicationController
   end
   
   def user_params
-    params.require(:user).permit(:username, :email, :password)
+    params.require(:user).permit(:username, :first_name, :last_name, :email, :password)
   end
   
   def require_same_user
