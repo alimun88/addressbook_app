@@ -16,8 +16,9 @@
             <strong>Complete Address: </strong>
             <% if logged_in? %>
               <%= simple_format(contact.address) %>
-              <strong>Home Phone Number: </strong> <%= number_to_phone(contact.home_telephone, pattern: /(\d{1,3})(\d{3})(\d{4})$/, area_code: true) %><br>
-              <strong>Mobile Phone Number: </strong><%= number_to_phone(contact.mobile_telephone, pattern: /(\d{1,3})(\d{3})(\d{4})$/, area_code: true) %>
+              <strong>Home Phone Number: </strong><br> <%= number_to_phone(contact.home_telephone, pattern: /(\d{1,3})(\d{3})(\d{4})$/, area_code: true) %><br>
+              <strong>Mobile Phone Number: </strong><br><%= number_to_phone(contact.mobile_telephone, pattern: /(\d{1,3})(\d{3})(\d{4})$/, area_code: true) %><br>
+              <strong>Email: </strong><%#= simple_format(contact.user_email) %>
             <% else %>
              <p class="text-danger"> You have to be a member in order to see the address, Please sign up or log in if already signed up! </p>
             <% end %>
@@ -33,7 +34,7 @@
           <div class="contact-actions">
             <%= link_to "Edit this contact", edit_contact_path(contact), class: "btn btn-sm btn-primary" %>
             <%= link_to "Delete this contact", contact_path(contact), method: :delete,
-                data: { confirm: "Are you sure you want to delete the contact?"},
+                data: { confirm: "Are you sure you want to delete this contact?"},
                 class: "btn btn-sm btn-danger" %>
           </div>
           <% end %>

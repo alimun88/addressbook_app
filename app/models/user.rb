@@ -13,7 +13,6 @@ class User < ActiveRecord::Base
     "Anonymous"
   end
 
-  
   def except_current_user(users)
     users.reject {|user| user.id == self.id}
   end
@@ -48,11 +47,9 @@ class User < ActiveRecord::Base
   length: {minimum: 5, maximum: 25}
   
   validates :first_name, presence: true, 
-  uniqueness: {case_sensitive: false}, 
   length: {minimum: 3, maximum: 25}
   
-  validates :last_name, presence: true, 
-  uniqueness: {case_sensitive: false}, 
+  validates :last_name, presence: true,
   length: {minimum: 3, maximum: 25}
   
   validates :email, presence: true, length: { maximum: 105 },

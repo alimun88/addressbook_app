@@ -43,7 +43,8 @@ class UsersController < ApplicationController
     if @user.save 
       session[:user_id] = @user.id
       flash[:success] = "Welcome to create own Contacts #{@user.username}"
-      redirect_to user_path(@user)
+      #redirect_to user_path(@user)
+      redirect_to new_contact_path
     else
       render 'new'
     end
